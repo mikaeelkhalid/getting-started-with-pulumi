@@ -38,3 +38,6 @@ const backendBucket = new gcp.compute.BackendBucket("backend-bucket", {
     bucketName: bucket.name,
     enableCdn: true,
 });
+
+// provision a global IP address for the cdn.
+const ip = new gcp.compute.GlobalAddress("ip", {});
