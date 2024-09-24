@@ -1,0 +1,12 @@
+{
+    "name": "static-site",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^18",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@pulumi/gcp": "^8.2.0",
+        "@pulumi/pulumi": "^3.113.0"
+    }
+}
