@@ -32,3 +32,9 @@ const syncedFolder = new synced_folder.GoogleCloudFolder("synced-folder", {
     path: path,
     bucketName: bucket.name,
 });
+
+// enable the storage bucket as a cdn.
+const backendBucket = new gcp.compute.BackendBucket("backend-bucket", {
+    bucketName: bucket.name,
+    enableCdn: true,
+});
