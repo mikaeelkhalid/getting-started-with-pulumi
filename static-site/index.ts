@@ -41,3 +41,6 @@ const backendBucket = new gcp.compute.BackendBucket("backend-bucket", {
 
 // provision a global IP address for the cdn.
 const ip = new gcp.compute.GlobalAddress("ip", {});
+
+// create a URLMap to route requests to the storage bucket.
+const urlMap = new gcp.compute.URLMap("url-map", {defaultService: backendBucket.selfLink});
