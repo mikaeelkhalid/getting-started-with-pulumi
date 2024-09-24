@@ -47,3 +47,11 @@ const urlMap = new gcp.compute.URLMap("url-map", {defaultService: backendBucket.
 
 // create an HTTP proxy to route requests to the URLMap.
 const httpProxy = new gcp.compute.TargetHttpProxy("http-proxy", {urlMap: urlMap.selfLink});
+
+// create a GlobalForwardingRule rule to route requests to the HTTP proxy.
+const httpForwardingRule = new gcp.compute.GlobalForwardingRule("http-forwarding-rule", {
+    ipAddress: ip.address,
+    ipProtocol: "TCP",
+    portRange: "80",
+    target: httpProxy.selfLink,
+});
