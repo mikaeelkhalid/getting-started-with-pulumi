@@ -55,3 +55,9 @@ const httpForwardingRule = new gcp.compute.GlobalForwardingRule("http-forwarding
     portRange: "80",
     target: httpProxy.selfLink,
 });
+
+// export the URLs and hostnames of the bucket and CDN.
+export const originURL = pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/index.html`;
+export const originHostname = pulumi.interpolate`storage.googleapis.com/${bucket.name}`;
+export const cdnURL = pulumi.interpolate`http://${ip.address}`;
+export const cdnHostname = ip.address;
