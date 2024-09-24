@@ -5,6 +5,7 @@ import * as random from "@pulumi/random";
 // import the provider's configuration settings.
 const gcpConfig = new pulumi.Config("gcp");
 const location = gcpConfig.require("region");
+const project = gcpConfig.require("project");
 
 
 // generate a unique artifact registry repository id
@@ -25,3 +26,6 @@ const repository = new gcp.artifactregistry.Repository("repository", {
     location: location,
     repositoryId: repoId,
 });
+
+// form the repository URL
+let repoUrl = pulumi.concat(location, "-docker.pkg.dev/", project, "/", repository.repositoryId);
