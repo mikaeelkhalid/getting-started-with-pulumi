@@ -1,0 +1,7 @@
+config:
+  cloud-run:appPath: app
+  cloud-run:concurrency: "50"
+  cloud-run:containerPort: "8080"
+  cloud-run:cpu: "1"
+  cloud-run:memory: 1Gi
+  gcp:region: us-central1
