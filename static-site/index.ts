@@ -44,3 +44,6 @@ const ip = new gcp.compute.GlobalAddress("ip", {});
 
 // create a URLMap to route requests to the storage bucket.
 const urlMap = new gcp.compute.URLMap("url-map", {defaultService: backendBucket.selfLink});
+
+// create an HTTP proxy to route requests to the URLMap.
+const httpProxy = new gcp.compute.TargetHttpProxy("http-proxy", {urlMap: urlMap.selfLink});
